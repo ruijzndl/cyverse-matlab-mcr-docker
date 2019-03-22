@@ -1,10 +1,10 @@
-FROM debian
+FROM debian:stretch
 
-# update apk
+# update apt
 RUN apt-get update && apt-get upgrade
 
-# add bash
-RUN apt-get --no-install-recommends -y install bash unzip wget curl
+# add minor dependencies
+RUN apt-get --no-install-recommends -y install bash unzip wget
 
 # construct the mcr install directory
 RUN mkdir /opt/mcr_install
