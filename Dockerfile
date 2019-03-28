@@ -1,7 +1,7 @@
 FROM debian:stretch
 
-ARG MATLAB_MCR_URL
-ARG MATLAB_LD_LIBRARY_PATH
+ARG MATLAB_MCR_URL=http://ssd.mathworks.com/supportfiles/downloads/R2019a/Release/0/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019a_glnxa64.zip
+ARG MATLAB_LD_LIBRARY_PATH=/usr/local/MATLAB/MATLAB_Runtime/v96/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v96/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v96/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v96/extern/bin/glnxa64
 
 # update apt
 RUN apt-get update && apt-get upgrade && \
