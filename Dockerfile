@@ -12,6 +12,12 @@ RUN apt-get update && apt-get upgrade && \
 RUN mkdir /opt/mcr_install
 WORKDIR /opt/mcr_install
 
+# extract and install mcr
+RUN wget -q -O MCR_installer.zip ${MATLAB_MCR_URL} && \
+    unzip MCR_installer.zip && \
+    ./install -mode silent -agreeToLicense yes -outputFile /opt/mcr_install.log && \
+    rm -rf /opt/mcr_install /tmp/mathworks*
+
 ENV LD_LIBRARY_PATH=${MATLAB_LD_LIBRARY_PATH}
 
 WORKDIR /
