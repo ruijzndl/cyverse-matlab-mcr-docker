@@ -1,7 +1,7 @@
 FROM debian:stretch
 
-ARG MATLAB_MCR_URL
-ARG MATLAB_LD_LIBRARY_PATH
+ARG MATLAB_MCR_URL=http://ssd.mathworks.com/supportfiles/downloads/R2019a/Release/0/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019a_glnxa64.zip
+ARG MATLAB_LD_LIBRARY_PATH=/usr/local/MATLAB/MATLAB_Runtime/v96/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v96/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v96/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v96/extern/bin/glnxa64
 
 ARG MCR_DEPS="bash unzip wget libx11-6 libxt6 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxft2 libxi6 libxrandr2 libxrender1 libxtst6 libxxf86vm1 cairo-5c libfontconfig1 libasound2 libatk1.0-0 libatk1.0-dev libcups2-dev libgconf2-dev libgtk2.0-0 libgdk-pixbuf2.0-0 libgnome-vfs2.0-cil-dev gstreamer1.0-alsa gstreamer1.0-plugins-base libpango-1.0-0 libsndfile1 libxcb1 libxslt1.1 libxss1"
 
