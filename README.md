@@ -1,5 +1,5 @@
 # cyverse-matlab-mcr-docker
-This is a cyverse curated Dockerfile to build matlab images. Branches in this repo represents supported MCR versions. Master is currently R2108b.
+This is a cyverse curated Dockerfile to build matlab images. Branches in this repo represents supported MCR versions. Master is currently R2109a.
 
 To build your own custom matlab mcr image: checkout master, edit the Dockerfile, and build with the following args:
 
