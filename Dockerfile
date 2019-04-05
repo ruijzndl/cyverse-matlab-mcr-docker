@@ -3,9 +3,12 @@ FROM debian:stretch
 ARG MATLAB_MCR_URL
 ARG MATLAB_LD_LIBRARY_PATH
 
+ARG MCR_DEPS="bash unzip wget libx11-6 libxt6 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxft2 libxi6 libxrandr2 libxrender1 libxtst6 libxxf86vm1 cairo-5c libfontconfig1 libasound2 libatk1.0-0 libatk1.0-dev libcups2-dev libgconf2-dev libgtk2.0-0 libgdk-pixbuf2.0-0 libgnome-vfs2.0-cil-dev gstreamer1.0-alsa gstreamer1.0-plugins-base libpango-1.0-0 libsndfile1 libxcb1 libxslt1.1 libxss1"
+
 # update apt
-RUN apt-get update && apt-get upgrade && \
-    apt-get --no-install-recommends -y install bash unzip wget && \
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && \
+    DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install ${MCR_DEPS} && \
     rm -rf /var/lib/apt/lists/*
 
 # construct the mcr install directory
