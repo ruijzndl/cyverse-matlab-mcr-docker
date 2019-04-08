@@ -22,5 +22,6 @@ RUN wget -q -O MCR_installer.zip ${MATLAB_MCR_URL} && \
     rm -rf /opt/mcr_install /tmp/mathworks*
 
 ENV LD_LIBRARY_PATH=${MATLAB_LD_LIBRARY_PATH}
+RUN echo "export LD_LIBRARY_PATH=\"${MATLAB_LD_LIBRARY_PATH}\"" >/etc/profile.d/matlab.sh && chmod a+x /etc/profile.d/matlab.sh
 
 WORKDIR /
