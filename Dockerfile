@@ -21,7 +21,10 @@ RUN wget -q -O MCR_installer.zip ${MATLAB_MCR_URL} && \
     ./install -mode silent -agreeToLicense yes -outputFile /opt/mcr_install.log && \
     rm -rf /opt/mcr_install /tmp/mathworks*
 
-ENV LD_LIBRARY_PATH=${MATLAB_LD_LIBRARY_PATH}
-RUN echo "export LD_LIBRARY_PATH=\"${MATLAB_LD_LIBRARY_PATH}\"" >/etc/profile.d/matlab.sh && chmod a+x /etc/profile.d/matlab.sh
+RUN echo "" > /etc/ld.so.conf.d/zzmatlab.conf && \
+    for i in $(echo $MATLAB_LD_LIBRARY_PATH|tr ':' '\n'); do echo $i >>/etc/ld.so.conf.d/zzmatlab.conf; done && \
+    /sbin/ldconfig
+#ENV LD_LIBRARY_PATH=${MATLAB_LD_LIBRARY_PATH}
+#RUN echo "export LD_LIBRARY_PATH=\"${MATLAB_LD_LIBRARY_PATH}\"" >/etc/profile.d/matlab.sh && chmod a+x /etc/profile.d/matlab.sh
 
 WORKDIR /
