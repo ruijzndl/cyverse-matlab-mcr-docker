@@ -22,6 +22,7 @@ RUN wget -q -O MCR_installer.zip ${MATLAB_MCR_URL} && \
     ./install -mode silent -agreeToLicense yes -outputFile /opt/mcr_install.log && \
     rm -rf /opt/mcr_install /tmp/mathworks*
 
+# Download, build and install git 2.22.4
 RUN mkdir /tmp/git
 WORKDIR /tmp/git
 RUN wget https://github.com/git/git/archive/v2.22.4.tar.gz && \
@@ -33,6 +34,7 @@ RUN wget https://github.com/git/git/archive/v2.22.4.tar.gz && \
     make -j 4 install && \
     cd .. && rm -rf git*
 
+# Uninstall git 2.22.4 build dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y remove ${GIT_DEPS}
 
 ENV LD_LIBRARY_PATH=${MATLAB_LD_LIBRARY_PATH}
